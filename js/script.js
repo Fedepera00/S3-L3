@@ -18,7 +18,7 @@ document.getElementById("addTaskButton").addEventListener("click", function () {
   });
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Elimina";
+  deleteButton.textContent = "🗑️";
   deleteButton.className = "delete-btn";
   deleteButton.addEventListener("click", function () {
     taskList.removeChild(listItem);
