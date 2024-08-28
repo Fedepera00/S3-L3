@@ -1,5 +1,6 @@
 document.getElementById("addTaskButton").addEventListener("click", function () {
-  const taskText = document.getElementById("taskInput").value;
+  const input = document.getElementById("taskInput");
+  const taskText = input.value;
 
   if (taskText === "") {
     alert("Per continuare inserisci un nuovo elemento  ");
@@ -12,21 +13,21 @@ document.getElementById("addTaskButton").addEventListener("click", function () {
   listItem.className = "task-item";
 
   const taskSpan = document.createElement("span");
-  taskSpan.textContent = taskText;
-  taskSpan.addEventListener("click", function () {
-    this.classList.toggle("completato");
+  taskSpan.innerText = taskText;
+  taskSpan.addEventListener("click", function (event) {
+    event.currentTarget.classList.toggle("completato");
   });
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "🗑️";
+  deleteButton.innerText = "🗑️";
   deleteButton.className = "delete-btn";
-  deleteButton.addEventListener("click", function () {
-    taskList.removeChild(listItem);
+  deleteButton.addEventListener("click", function (event) {
+    event.currentTarget.parentNode.remove();
   });
 
   listItem.appendChild(taskSpan);
   listItem.appendChild(deleteButton);
   taskList.appendChild(listItem);
 
-  document.getElementById("taskInput").value = "";
+  input.value = "";
 });
